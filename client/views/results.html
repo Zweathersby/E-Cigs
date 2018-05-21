@@ -1,0 +1,34 @@
+<template name="results">
+  <div class="head" id="div-results">
+    <h1 class="h1-results">Survey Results</h1>
+    <button type="button" class="btn btn-danger" id="resultsbtn" aria-label="Reset results">
+      <h4><span class="glyphicon glyphicon-alert" aria-hidden="true"></span> Reset Results</h4>
+    </button>
+  </div>
+  <div class="yield">
+    {{#each patients}}
+    <table class="table table-striped">
+      <thead>
+        <tr id="results-thead-patient">
+          <th>{{patient}}</th>
+          <th>{{physician}}</th>
+        </tr>
+        <tr id="results-thead">
+          <th>Question</th>
+          <th>Answer</th>
+        </tr>
+      </thead>
+      <tbody>
+      {{#each results _id}}
+        <tr>
+          <td>{{question}}</td>
+          <td>{{answer}}</td>
+        </tr>
+      {{/each}}
+    </tbody>
+  </table>
+  {{else}}
+    <h3>No responses yet.</h3>
+  {{/each}}
+  </div>
+</template>

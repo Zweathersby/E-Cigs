@@ -1,0 +1,45 @@
+<template name="answerSlider">
+  <li class="answer">
+    <input type="range" min = "1" max = "10" value = "5" class = "slider">
+    <div id="scale">
+      <p id="one">1</p><p id="ten">10</p>
+    </div>
+  </li>
+</template>
+
+<template name="answerTF">
+  <div class="btn-group" data-toggle="buttons">
+    <label class="btn btn-primary btn-lg active">
+      <input type="radio" name="truefalse" id="true" value="true" autocomplete="off" checked> True
+    </label>
+    <label class="btn btn-primary btn-lg">
+      <input type="radio" name="truefalse" id="false" value="false" autocomplete="off"> False
+    </label>
+  </div>
+</template>
+
+<template name="answerShort">
+  <div class="input-group">
+    <span class="input-group-addon" id="basic-addon1"></span>
+    <input type="text" class="form-control" placeholder="Insert answer here" aria-describedby="basic-addon1">
+  </div>
+</template>
+
+<template name="answerMulti">
+    <div class="col-lg-6">
+        <div class="input-group">
+          <span class="input-group-addon">
+            <input type="radio" aria-label="...">
+          </span>
+          <input type="text" class="form-control" aria-label="...">
+          <span class="input-group-addon">
+            <input type="radio" aria-label="...">
+          </span>
+          <input type="text" class="form-control" aria-label="...">
+          <span class="input-group-addon">
+            <input type="radio" aria-label="...">
+          </span>
+          <input type="text" class="form-control" aria-label="...">
+        </div><!-- /input-group -->
+      </div>
+</template>

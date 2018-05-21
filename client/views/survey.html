@@ -1,0 +1,88 @@
+<template name="survey">
+<div class="survey-bkg">
+  <div class="head">
+    <h1>Smoking Cessation Survey</h1>
+  </div>
+  <div class="yield">
+    <h2>Please complete the following questions.</h2>
+      <form id="survey-form">
+        <!-- True/False Questions -->
+        {{#each questions}}
+        <div class="panel">
+          <div class="panel-heading">
+            <p>{{> question}}</p>
+          </div>
+          {{#if isTF option}}
+          <div class="panel-body">
+            <div class="btn-group" data-toggle="buttons">
+              <label class="btn btn-primary btn-lg active">
+                <input type="radio" class="truefalse" id="true" value="true" autocomplete="off" checked> True
+              </label>
+              <label class="btn btn-primary btn-lg">
+                <input type="radio" class="truefalse" id="false" value="false" autocomplete="off"> False
+              </label>
+            </div></div>
+          {{else if isSlider option}}
+            <div class="panel-body ansSlider">
+              <input type="range" min="1" max="10" value="5" class="slider" id="slider{{@index}}">
+              <div id="scale">
+                <p id="one">1</p><p id="ten">10</p>
+              </div>
+            </div>
+          {{else if isShort option}}
+            <div class="panel-body">
+              <input type="text" class="form-control shortAns" id="short{{@index}}" placeholder="Insert answer here" aria-describedby="basic-addon1" required>
+            </div>
+          {{else}}
+            <div class="panel-body" id="mc-choices">
+              <div class="radio">
+                <label class="selection{{@index}}"><input type="radio" class="selection" name="choice{{@index}}" value="{{c1}}">{{c1}}</label>
+              </div>
+              <div class="radio">
+                <label class="selection{{@index}}"><input type="radio" class="selection" name="choice{{@index}}" value="{{c2}}">{{c2}}</label>
+              </div>
+              <div class="radio">
+                <label class="selection{{@index}}"><input type="radio" class="selection" name="choice{{@index}}" value="{{c3}}">{{c3}}</label>
+              </div>
+            </div>
+          {{/if}}
+        </div>
+      {{else}}
+        <h3>Please add questions to your survey.</h3>
+      {{/each}}
+      <div id="submit">
+          <input type="button" name="btn" value="Submit" id="submitBtn" data-toggle="modal" data-target="#confirmationModal" class="btn-success btn-lg" />
+      </div>
+    </form>
+  </div>
+</div>
+<!-- Confirmation modal -->
+<div class="modal fade" id="confirmationModal">
+      <div class="modal-dialog">
+          <div class="modal-content">
+              <div class="modal-header">
+                  <h2 class="modal-title">Confirm Submission</h2>
+              </div>
+
+              <div class="modal-body">
+                  <h4>Please enter your full name, followed by your physician's name.</h4>
+                  <div class="input-group input-group-lg" id="survey-name-input">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text" id="">Your full name</span>
+                    </div>
+                    <input type="text" class="form-control survey-name" aria-label="Large" aria-describedby="inputGroup-sizing-sm">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text" id="">Physician's name</span>
+                    </div>
+                    <input type="text" class="form-control survey-physician" aria-label="Large" aria-describedby="inputGroup-sizing-sm">
+                  </div>
+              </div>
+
+              <div class="modal-footer">
+                <button type="button" id="confirm-submit" class="btn btn-primary btn-lg btn-block">Submit</button>
+                <button type="button" class="btn btn-default btn-lg btn-block"  data-dismiss="modal">Cancel</button>
+              </div>
+          </div>
+      </div>
+</div>
+</template>

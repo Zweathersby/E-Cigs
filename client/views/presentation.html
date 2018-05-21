@@ -1,0 +1,23 @@
+
+<template name="presentation">
+  <div class="head">
+    <h1>Presentation</h1>
+  </div>
+  <div class="yield">
+    {{#if isInRole 'admin'}}
+    <div class="row">
+      <form class="presentation-form">
+        <div class="input-group input-group-lg presentation-input">
+          <input type="text" name="text" class="form-control shadow" id="present-input" placeholder="Insert embed iframe here...">
+          <span class="input-group-btn">
+            <button class="btn btn-secondary" id="presentation-save" type="submit">Save</button>
+          </span>
+        </div>
+      </form>
+    </div>
+    {{/if}}
+  </div>
+  <div class="embed-responsive embed-responsive-16by9">
+    {{{iframeInsert}}}
+	</div>
+</template>

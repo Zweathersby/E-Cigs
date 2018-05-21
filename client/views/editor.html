@@ -1,0 +1,150 @@
+<template name="editor">
+  <div class="head">
+    <h1>Survey Editor</h1>
+  </div>
+  <div class="yield">
+    <h2>Survey List</h2>
+
+    <!-- Insert new survey -->
+    <form class="new-survey">
+      <div class="input-group input-group-lg">
+        <input type="text" name="text" class="form-control" placeholder="Insert survey name here..." required>
+        <span class="input-group-btn">
+          <button class="btn btn-success" type="submit">Add</button>
+        </span>
+      </div>
+    </form>
+    <div class="list-group">
+      {{#each surveys}}
+      <a href="#" class="list-group-item list-surveys" id="{{_id}}">
+        <div id="delete-survey">
+          <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+        </div>
+        <span class="badge">{{count}}</span>
+        {{surveyName}}
+      </a>
+      {{/each}}
+    </div>
+
+    <h2>Survey Questions</h2>
+
+    <form class="new-question">
+      <!-- <button type="submit" class="btn btn-default" id="addquestion" aria-label="Add Question">
+        <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+      </button> -->
+      <div class="input-group input-group-lg" id="editor-input">
+        <input type="text" name="text" class="form-control" placeholder="Insert question here..." required>
+        <span class="input-group-btn">
+          <button class="btn" id="addquestion" type="submit">
+            <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+          </button>
+        </span>
+      </div>
+      <div class="btn-group btn-group-justified blocks" id="editor-choices" data-toggle="buttons">
+        <label class="btn btn-primary btn-lg active">
+          <input type="radio" name="options" id="True/False" value="optTF" autocomplete="off" checked> True/False
+        </label>
+        <label class="btn btn-primary btn-lg">
+          <input type="radio" name="options" id="Slider" value="optSlider" autocomplete="off"> Slider
+        </label>
+        <label class="btn btn-primary btn-lg">
+          <input type="radio" name="options" id="Short" value="optShort" autocomplete="off"> Short Answer
+        </label>
+        <label class="btn btn-primary btn-lg">
+          <input type="radio" name="options" id="Multi" value="optMulti" autocomplete="off" onclick="Modal.show('multiModal')"> Multiple Choice
+        </label>
+      </div>
+    </form>
+      <div class="sorting-container">
+        {{#sortable items=selectedSurvey sortField="count" handle=".sort-btn"}}
+        {{#if isMC option}}
+          <div class="editor-wrapper">
+            <div class="slide sort-btn" id="edit-btn" touch-action="none">
+              <span class="glyphicon glyphicon-move" id="edit-span" aria-hidden="true"></span>
+            </div>
+            <div class="slide" id="q-slide">
+              <!-- <span class="label label-info" id="editor-label">{{option}}</span> -->
+              <div class="question">
+                <h3><span contenteditable="false" style="margin-bottom: .5em">{{question}}</span></h3>
+              </div>
+              <button class="editor-dropdown" data-toggle="collapse" data-target="#mc-choices{{count}}" aria-expanded="false" aria-controls="mc-choices{{count}}">
+                <span class="glyphicon glyphicon-menu-down" aria-hidden="true"></span>
+                <span class="glyphicon glyphicon-menu-up" aria-hidden="true"></span>
+              </button>
+            </div>
+            <div class="slide" id="delete-btn">
+              <span class="glyphicon glyphicon-remove" id="delete-span" aria-hidden="true"></span>
+            </div>
+          </div>
+          <div class="collapse mc-collapse" id="mc-choices{{count}}">
+            <div class="mc-collapse-padding">
+              <div class="radio" id="mc-collapse">
+                <label><input type="radio" name="choice">{{c1}}</label>
+              </div>
+              <div class="radio" id="mc-collapse">
+                <label><input type="radio" name="choice">{{c2}}</label>
+              </div>
+              <div class="radio" id="mc-collapse">
+                <label><input type="radio" name="choice">{{c3}}</label>
+              </div>
+            </div>
+          </div>
+        {{else}}
+          <div class="editor-wrapper">
+            <div class="slide sort-btn" id="edit-btn">
+                <span class="glyphicon glyphicon-move" id="edit-span" aria-hidden="true"></span>
+            </div>
+            <div class="slide" id="q-slide">
+              <div class="question">
+                <h3><span class="qText" contenteditable="false">{{question}}</span></h3>
+              </div>
+              <span class="label label-info" id="editor-label">{{option}}</span>
+            </div>
+            <div class="slide" id="delete-btn">
+                <span class="glyphicon glyphicon-remove" id="delete-span" aria-hidden="true"></span>
+            </div>
+          </div>
+        {{/if}}
+      {{else}}
+        <h3>Add questions to your survey!</h3>
+      {{/sortable}}
+    </div>
+
+  <!-- Multiple Choice Modal -->
+  <div class="modal fade" id="multiModal">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+              <form id="optMulti-form">
+              <!-- Header -->
+              <div class="modal-header">
+                  <h2 class="modal-title">Multiple Choice Option</h2>
+                  <!-- Question -->
+                  <div class="form-group">
+                      <label>Question</label>
+                      <input type="text" name="question" id="multiQ" value="Yes" class="form-control" placeholder="Your Question">
+                  </div>
+              </div>
+              <div class="modal-body">
+                <!-- Choices -->
+                  <div class="form-group">
+                      <label>Choice A</label>
+                      <input type="text" name="choices" class="form-control" value="" placeholder="Choice A" required />
+                      <label>Choice B</label>
+                      <input type="text" name="choices" class="form-control" value="" placeholder="Choice B" required />
+                      <label>Choice C</label>
+                      <input type="text" name="choices" class="form-control" value="" placeholder="Choice C">
+                  </div>
+              </div>
+              <!-- Buttons -->
+              <div class="modal-footer">
+                <!-- <button class="editor-modal" id="cancel-modal-btn" data-dismiss="modal"> Cancel </button>
+                <button class="editor-modal" id="add-multi-btn"> Add Question </button> -->
+                <button type="button" id="add-multi-btn" class="btn btn-primary btn-lg btn-block">Add Question</button>
+                <button type="button" class="btn btn-default btn-lg btn-block"  data-dismiss="modal">Close</button>
+              </div>
+            </form>
+            </div>
+        </div>
+    </div>
+  </div>
+</template>

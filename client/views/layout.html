@@ -1,0 +1,30 @@
+<template name="layout">
+  <div id="sideNav" class="sidenav">
+      <a href="javascript:void(0)" style="font-size:50px" class="closebtn" onclick="closeNav()">&times;</a>
+      <a href="/" class="links">Home</a>
+     <a href="/presentation" class="links">Presentation</a>
+      <a href="/survey" class="links">Survey</a>
+      {{#if isInRole 'admin'}}
+        <a href="/editor" class="links">Editor</a>
+        <a href="/results" class="links">Results</a>
+      {{/if}}
+      {{#if currentUser}}
+        <button class="btn" id="logout" type="submit">Logout</button>
+      {{else}}
+        <button class="btn" id="login" type="submit">Login</button>
+      {{/if}}
+  </div>
+  <div id="container">
+    {{> yield}}
+  </div>
+
+  <div class="modal fade" id="loginModal">
+    <div class="modal-dialog">
+        <div class="loginModal-content">
+          <div class="modal-body">
+            {{>LoginModal}}
+          </div>
+        </div>
+    </div>
+  </div>
+</template>

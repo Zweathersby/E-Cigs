@@ -1,0 +1,49 @@
+<template name="index">
+  <div class="head">
+    <h1>Welcome!</h1>
+  </div>
+  <div class="yield">
+    <div class="embed-responsive embed-responsive-16by9">
+      <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/5GqemrgGa7g" width="300" height="150" frameborder="0" allowfullscreen="allowfullscreen"></iframe>
+    </div>
+    <br />
+    <h4>You may not want to quit smoking, but if you do, the information in this decision aid can help you understand your options and be able to talk about them with a doctor.</h4>
+    <br />
+    <h4><strong>Your main options when it comes to quitting smoking are:</strong></h4>&nbsp;
+    <ul>
+      <li>
+        <h4><strong>Going it alone.</strong> This means that you attempt to quit smoking without help from your doctor or other methods such as nicotine gum, patches, lozenges, or inhalers.
+          <a href="/aloneinfo" class="btn btn-primary">To learn more, please click here.</a>
+        </h4>
+      </li>
+      <li>
+        <h4><strong>Getting assistance from a doctor or healthcare professional who can counsel you in quitting smoking.</strong> Your doctor will be able to talk with you about all of the options you have when it comes to quitting.
+          <a href="/assistanceinfo" class="btn btn-primary">To learn more, please click here.</a>
+        </h4>
+      </li>
+      <li>
+        <h4><strong>Deciding to not quit, but instead continue smoking.</strong> You may decide after reading through this information that you want to continue smoking.
+          <input type="button" name="btn" value="To learn more, please click here." data-toggle="modal" data-target="#ecigModal" class="btn btn-primary" />
+        </h4>
+      </li>
+    </ul><br />
+    <h4>Sometimes smokers who want to quit have to try a few different methods before they are successful in totally giving up cigarettes.</h4>
+    <br />
+    <h2>Ready to take the survey? <a href="/survey" class="btn btn-primary">Click here</a></h2>
+  </div>
+
+  <!-- E-cig modal -->
+  <div class="modal fade" id="ecigModal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3 class="modal-title">Do you have an interest in E-Cigarettes?</h3>
+                </div>
+                <div class="modal-footer">
+                  <a href="/ecig" type="button" class="btn btn-primary btn-lg btn-block">Yes</a>
+                  <a href="/smokeinfo" type="button" class="btn btn-default btn-lg btn-block">No</a>
+                </div>
+            </div>
+        </div>
+  </div>
+</template>

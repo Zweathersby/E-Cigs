@@ -4,11 +4,11 @@
 Application developed by: Zack Weathersby
 
 ## Purpose
-Intended for use in doctors offices by patients who are smokers for the doctor to get a better understanding of their patients need before the appointment even begins. 
+Intended for use in doctors offices by patients who are smokers for the doctor to get a better understanding of their patients need before the appointment even begins.
 
 The patients will first review information regarding their smoking habits, and, depending on their choice, information about e-cigarettes as well.
 
-Patients will then complete a survey which is customized by their doctors office. The doctor will log in to their administrator account where they can edit the questions asked in the survey to include a variety of multiple choice, short answer, slider, and true/false questions. 
+Patients will then complete a survey which is customized by their doctors office. The doctor will log in to their administrator account where they can edit the questions asked in the survey to include a variety of multiple choice, short answer, slider, and true/false questions.
 
 The patients response are grouped by patient names and are able to be viewed in the doctor's administrator account.
 
@@ -18,7 +18,12 @@ The patients response are grouped by patient names and are able to be viewed in 
 ### Deployment
 The app is currently deployed on heroku at this address:
 ```
-https://peaceful-bastion-31676.herokuapp.com/
+https://ecigs.herokuapp.com/
+```
+In order to see admin pages (viewing results and editing surveys), login with the following credentials:
+```
+Username: testing@test.com
+Password: test123
 ```
 
 ### Credits

@@ -1,6 +1,6 @@
 {
-  "name": "USC-ECigs",
-  "private": true,
+  "name": "E-Cigs",
+  "private": false,
   "scripts": {
     "start": "meteor run"
   },

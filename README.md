@@ -12,8 +12,7 @@ Patients will then complete a survey which is customized by their doctors office
 
 The patients response are grouped by patient names and are able to be viewed in the doctor's administrator account.
 
-* Repo: https://github.com/SCCapstone/E-CigsUSC
-* Website: https://peaceful-bastion-31676.herokuapp.com/
+* Repo: https://github.com/Zweathersby/E-Cigs
 
 ### Deployment
 The app is currently deployed on heroku at this address:
